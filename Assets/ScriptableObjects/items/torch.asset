@@ -9,8 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 209119132a5f57842a6cba951e0ef8fb, type: 3}
-  m_Name: playerInventory
+  m_Script: {fileID: 11500000, guid: d75235525a0c99745bef7890e0dff305, type: 3}
+  m_Name: torch
   m_EditorClassIdentifier: 
-  savePath: inventorySave.json
-  container: []
+  Id: 0
+  prefab: {fileID: 2828453958216338495, guid: 071010afdd55a0c4db12ec9000ab09f0, type: 3}
+  type: 2
+  description: 
