@@ -6,6 +6,7 @@ TagManager:
   tags:
   - CinemachineTarget
   - Selectable
+  - KeyPadObject
   layers:
   - Default
   - TransparentFX
