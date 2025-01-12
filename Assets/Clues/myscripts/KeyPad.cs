@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class KeyPad : MonoBehaviour
 {
     [SerializeField] private Text not; // Feedback text
-    private string ans = "DoReMi"; // Correct answer
+    private string ans = "MiLaSolFaSi"; // Correct answer
 
     // Reference to Animator components for the three animations
     [SerializeField] private Animator[] animators; // Array of animators for multiple animations
