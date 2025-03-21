@@ -8,6 +8,7 @@ public class Search : ActionNode
     private GameObject guard;
     private NavMeshAgent agent;
     private GameObject player;
+    private Animator guardAnimator;
 
     protected override void OnStart()
     {
@@ -15,6 +16,9 @@ public class Search : ActionNode
         guard = context.gameObject;
         agent = guard.GetComponent<NavMeshAgent>();
         player = GameObject.Find("Player");
+        
+        Debug.Log("searching");
+
     }
 
     protected override void OnStop()
@@ -24,11 +28,14 @@ public class Search : ActionNode
     protected override State OnUpdate()
     {
         if (Vector3.Distance(guard.transform.position, blackboard.moveToPosition) < 0.5f)
+
         {
+           
             return State.Running;
         }
         else
         {
+            
             agent.SetDestination(blackboard.moveToPosition);
             return State.Failure;
         }

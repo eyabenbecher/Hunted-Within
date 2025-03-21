@@ -7,6 +7,7 @@ public class Chaser1 : ActionNode
 {
     private GameObject player;
     private GameObject guard;
+    private Animator guardAnimator; // Animator reference
     public guardProp guardProp;
 
     public float vitesse_poursuite;
@@ -19,44 +20,65 @@ public class Chaser1 : ActionNode
         player = GameObject.Find("Player");
         guard = context.gameObject;
 
+        // Get the Animator component attached to the guard
+        guardAnimator = guard.GetComponent<Animator>();
+
         guardProp = guard.GetComponent<guardProp>();
-        vitesse_poursuite = 20f;
-        vitesseRot_poursuite = 10f;
-        precision_poursuite = 10f;
+        vitesse_poursuite = 5f;
+        vitesseRot_poursuite = 5f;
+        precision_poursuite = 0.5f;
     }
 
     protected override void OnStop()
     {
+        // Stop any animations if needed when the action stops
+        guardAnimator.SetBool("isRunning", false);
     }
 
     protected override State OnUpdate()
     {
         Poursuivre(player.transform);
-        //agent.SetDestination(player.transform.position);
 
-        if (Vector3.Distance(guard.transform.position, player.transform.position) < 1.0f)
+        // Calculate the distance between the guard and the player
+        float distanceToPlayer = Vector3.Distance(guard.transform.position, player.transform.position);
+
+        // Debug log the distance
+        Debug.Log("Distance between guard and player: " + distanceToPlayer);
+
+        // If the guard is within range of the player, stop chasing
+        if (distanceToPlayer < 1.0f)
         {
+            Debug.Log("Caught player");
+
             return State.Success;
         }
         else
         {
             blackboard.moveToPosition = player.transform.position;
+            Debug.Log("Chasing player");
+            guardAnimator.SetBool("isRunning", true);
             return State.Running;
         }
     }
+
+
     public void Poursuivre(Transform Player)
     {
-        guard.GetComponent<UnityEngine.AI.NavMeshAgent>().isStopped = true;
+        guard.GetComponent<UnityEngine.AI.NavMeshAgent>().isStopped = false; // Ensure the agent is not stopped
         guard.GetComponent<UnityEngine.AI.NavMeshAgent>().ResetPath();
         Vector3 direction = Player.position - guard.transform.position;
-        guard.transform.rotation = Quaternion.Slerp(guard.transform.rotation, Quaternion.
-         LookRotation(direction), Time.deltaTime * vitesseRot_poursuite);
+        guard.transform.rotation = Quaternion.Slerp(guard.transform.rotation, Quaternion.LookRotation(direction), Time.deltaTime * vitesseRot_poursuite);
 
+        // If the guard is far enough from the player, move and play running animation
         if (direction.magnitude > precision_poursuite)
         {
             guard.transform.Translate(0, 0, Time.deltaTime * vitesse_poursuite);
-            //ici chisir le bon emplacement sur votre map !
-        }
 
+           
+           
+
+
+        }
+       
     }
 }

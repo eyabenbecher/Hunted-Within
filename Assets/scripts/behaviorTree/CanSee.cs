@@ -15,36 +15,25 @@ public class CanSee : ActionNode
 
     protected override void OnStart()
     {
-        Debug.Log("CanSee: OnStart() called.");
+       
 
-        // Find the player GameObject
         player = GameObject.Find("Player");
         if (player == null)
         {
             Debug.LogError("CanSee: Player object not found! Make sure a GameObject named 'Player' exists in the scene.");
         }
-        else
-        {
-            Debug.Log("CanSee: Player object found.");
-        }
-
-        // Assign guard from behavior tree context
+       
         guard = context?.gameObject;
         if (guard == null)
         {
             Debug.LogError("CanSee: Context or guard is null! Check if this node is correctly assigned in the behavior tree.");
             return;
         }
-        Debug.Log("CanSee: Guard object found: " + guard.name);
+       
 
-        // Get guard properties component
+      
         guardProp = guard.GetComponent<guardProp>();
-        if (guardProp == null)
-        {
-            Debug.LogError("CanSee: guardProp component not found on guard! Ensure the guard has a 'guardProp' component attached.");
-            return;
-        }
-        Debug.Log("CanSee: guardProp component found.");
+       
 
         // Assign Field of View values
         fovDistance = guardProp.fovDistance;
@@ -59,19 +48,18 @@ public class CanSee : ActionNode
 
     protected override State OnUpdate()
     {
-        Debug.Log("CanSee: OnUpdate() called.");
+       
 
         DrawFOV();
 
-        // Check if player or guard is null before proceeding
         if (player == null)
         {
-            Debug.LogError("CanSee: Player is null in OnUpdate! Ensure it's assigned correctly.");
+           
             return State.Failure;
         }
         if (guard == null)
         {
-            Debug.LogError("CanSee: Guard is null in OnUpdate! This should not happen if context is set.");
+           
             return State.Failure;
         }
 
