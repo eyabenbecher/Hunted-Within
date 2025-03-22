@@ -50,7 +50,7 @@ public class Chaser1 : ActionNode
         {
             Debug.Log("Caught player");
 
-            return State.Success;
+            return State.Running;
         }
         else
         {
