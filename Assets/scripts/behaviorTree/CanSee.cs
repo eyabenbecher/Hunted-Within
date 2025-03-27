@@ -35,7 +35,7 @@ public class CanSee : ActionNode
         guardProp = guard.GetComponent<guardProp>();
        
 
-        // Assign Field of View values
+     
         fovDistance = guardProp.fovDistance;
         fovAngle = guardProp.fovAngle;
         Debug.Log($"CanSee: fovDistance = {fovDistance}, fovAngle = {fovAngle}");

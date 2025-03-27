@@ -38,7 +38,7 @@ public class Patrolll : ActionNode
     {
         // Stop patrolling and ensure idle animation is active when stopping the behavior
         animator.SetBool("isWalking", false);
-        animator.SetBool("isIdle", true);
+       
         navMeshAgent.isStopped = true; // Stop the NavMeshAgent from moving
     }
 
@@ -78,7 +78,7 @@ public class Patrolll : ActionNode
 
     private void MoveToNextLocation()
     {
-        // Start walking animation when moving to the next location
+        
         animator.SetBool("isWalking", true);
         animator.SetBool("isIdle", false); // Stop idle animation
 
@@ -86,7 +86,7 @@ public class Patrolll : ActionNode
         Vector3 randomPoint = lastKnownLocation + Random.insideUnitSphere * patrolDistance;
         randomPoint.y = 0; // Ensure the point stays on the same level
 
-        // Set the guard's destination to the random point
+      
         navMeshAgent.SetDestination(randomPoint);
 
         isPatrolling = true; // Indicate that the guard is patrolling

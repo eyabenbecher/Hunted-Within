@@ -7,7 +7,7 @@ public class Chaser1 : ActionNode
 {
     private GameObject player;
     private GameObject guard;
-    private Animator guardAnimator; // Animator reference
+    private Animator guardAnimator; 
     public guardProp guardProp;
 
     public float vitesse_poursuite;
@@ -16,11 +16,11 @@ public class Chaser1 : ActionNode
 
     protected override void OnStart()
     {
-        //Debug.Log("Chasing player...");
+        
         player = GameObject.Find("Player");
         guard = context.gameObject;
 
-        // Get the Animator component attached to the guard
+        
         guardAnimator = guard.GetComponent<Animator>();
 
         guardProp = guard.GetComponent<guardProp>();
@@ -31,7 +31,7 @@ public class Chaser1 : ActionNode
 
     protected override void OnStop()
     {
-        // Stop any animations if needed when the action stops
+        
         guardAnimator.SetBool("isRunning", false);
     }
 
@@ -56,7 +56,9 @@ public class Chaser1 : ActionNode
         {
             blackboard.moveToPosition = player.transform.position;
             Debug.Log("Chasing player");
+            guardAnimator.SetBool("isIdle", false);
             guardAnimator.SetBool("isRunning", true);
+
             return State.Running;
         }
     }
@@ -64,7 +66,7 @@ public class Chaser1 : ActionNode
 
     public void Poursuivre(Transform Player)
     {
-        guard.GetComponent<UnityEngine.AI.NavMeshAgent>().isStopped = false; // Ensure the agent is not stopped
+        guard.GetComponent<UnityEngine.AI.NavMeshAgent>().isStopped = false; 
         guard.GetComponent<UnityEngine.AI.NavMeshAgent>().ResetPath();
         Vector3 direction = Player.position - guard.transform.position;
         guard.transform.rotation = Quaternion.Slerp(guard.transform.rotation, Quaternion.LookRotation(direction), Time.deltaTime * vitesseRot_poursuite);
