@@ -24,7 +24,7 @@ public class Chaser1 : ActionNode
         guardAnimator = guard.GetComponent<Animator>();
 
         guardProp = guard.GetComponent<guardProp>();
-        vitesse_poursuite = 5f;
+        vitesse_poursuite = 3f;
         vitesseRot_poursuite = 5f;
         precision_poursuite = 0.5f;
     }
@@ -45,10 +45,11 @@ public class Chaser1 : ActionNode
         // Debug log the distance
         Debug.Log("Distance between guard and player: " + distanceToPlayer);
 
-        // If the guard is within range of the player, stop chasing
+       
         if (distanceToPlayer < 1.0f)
         {
             Debug.Log("Caught player");
+           
 
             return State.Running;
         }
