@@ -7959,32 +7959,32 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 59cfaf729d70d1145947394ebed93150,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.0003094229
+      value: 0.00025914153
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 59cfaf729d70d1145947394ebed93150,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.0002931446
+      value: 0.00024550845
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 59cfaf729d70d1145947394ebed93150,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.00027175734
+      value: 0.00022759663
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 59cfaf729d70d1145947394ebed93150,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 34.688
+      value: 34.679
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 59cfaf729d70d1145947394ebed93150,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 11.447
+      value: 11.388
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 59cfaf729d70d1145947394ebed93150,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -102.875
+      value: -102.85
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 59cfaf729d70d1145947394ebed93150,
         type: 3}
@@ -14477,6 +14477,12 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.010050851, y: 0.010446597, z: 0.010069402}
   m_Center: {x: -0.00000020721941, y: 0.000008750241, z: 0.00000021094476}
+--- !u!1 &346955194 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2728657502604121322, guid: ffffbb33246dc6b42897d1fa10654121,
+    type: 3}
+  m_PrefabInstance: {fileID: 26192927}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &347611455 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8521453462395824417, guid: cc8508331083b764cbe53f87a9805b6c,
@@ -27047,7 +27053,7 @@ GameObject:
   - component: {fileID: 767055886}
   - component: {fileID: 767055885}
   m_Layer: 5
-  m_Name: Image
+  m_Name: board iamge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28437,6 +28443,11 @@ PrefabInstance:
     - target: {fileID: 114024263972142150, guid: 09e934849f7028c45bb17c3078f98c76,
         type: 3}
       propertyPath: open
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114024263972142150, guid: 09e934849f7028c45bb17c3078f98c76,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -34877,7 +34888,7 @@ GameObject:
   - component: {fileID: 990467056}
   - component: {fileID: 990467058}
   m_Layer: 3
-  m_Name: Image
+  m_Name: mirrors reflect our sins
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34915,7 +34926,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5924529, g: 0.46239007, b: 0.3208188, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -37289,7 +37300,7 @@ GameObject:
   - component: {fileID: 1065303160}
   - component: {fileID: 1065303159}
   m_Layer: 3
-  m_Name: Image
+  m_Name: music sheet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40204,7 +40215,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 499972, guid: 332b6e7c18301894f9d8b7fd34b83b4f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -35.38
+      value: -37.89
       objectReference: {fileID: 0}
     - target: {fileID: 499972, guid: 332b6e7c18301894f9d8b7fd34b83b4f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -42925,7 +42936,7 @@ GameObject:
   - component: {fileID: 1198234987}
   - component: {fileID: 1198234986}
   m_Layer: 3
-  m_Name: Image
+  m_Name: right music sheet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44753,7 +44764,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.6150943, g: 0.555906, b: 0.555906, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -52447,7 +52458,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1458311784}
   m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: 0, y: 0, z: -103.47}
+  m_LocalPosition: {x: 0, y: 0, z: -103.716}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -68464,7 +68475,7 @@ GameObject:
   - component: {fileID: 1781123667}
   - component: {fileID: 1781123666}
   m_Layer: 3
-  m_Name: Image
+  m_Name: music sheet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79887,6 +79898,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e78d5e04b3e66c7418aa32ac6b33f87d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventory: {fileID: 0}
+  inventoryUI: {fileID: 346955194}
+  seen: 0
 --- !u!4 &2088371071
 Transform:
   m_ObjectHideFlags: 0
@@ -87701,6 +87715,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83cda8c84a44da744b3888a0d4584121, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventory: {fileID: 11400000, guid: b3540e664cf83284a95af986355c4b2e, type: 2}
+  playerCamera: {fileID: 1777416469}
+  pickupSound: {fileID: 8300000, guid: 898caa09f351eaa4cad40e93e4a6d5b7, type: 3}
 --- !u!82 &8067200248543485461
 AudioSource:
   m_ObjectHideFlags: 0
