@@ -1,0 +1,404 @@
+fileFormatVersion: 2
+guid: d66760910510cb64db9bfe4d1c29272d
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: ChickenMesh
+    100004: Head1
+    100006: joint1
+    100008: joint11
+    100010: joint12
+    100012: joint20
+    100014: joint21
+    100016: joint22
+    100018: joint28
+    100020: joint29
+    100022: joint3
+    100024: joint30
+    100026: joint32
+    100028: joint33
+    100030: joint34
+    100032: joint35
+    100034: joint36
+    100036: joint37
+    100038: joint38
+    100040: joint39
+    100042: joint4
+    100044: joint40
+    100046: joint41
+    100048: joint42
+    100050: joint43
+    100052: joint5
+    100054: joint6
+    100056: joint7
+    100058: joint8
+    100060: joint9
+    100062: Leg1
+    100064: Leg2
+    100066: Tail1
+    100068: Wing1
+    100070: Wing2
+    100072: B_L_Leg_1
+    100074: B_L_Leg_2
+    100076: B_L_Leg_3
+    100078: B_R_Leg_1
+    100080: B_R_Leg_2
+    100082: B_R_Leg_3
+    100084: Back_1
+    100086: Back_2
+    100088: F_L_Leg_1
+    100090: F_L_Leg_2
+    100092: F_L_Leg_3
+    100094: F_R_Leg_1
+    100096: F_R_Leg_2
+    100098: F_R_Leg_3
+    100100: Head_1
+    100102: Head_2
+    100104: Head_3
+    100106: RatMesh
+    100108: Root
+    100110: Shoulders_1
+    100112: Tail_1
+    100114: Tail_2
+    100116: Tail_3
+    100118: Tail_4
+    100120: Tail_5
+    100122: Tail_6
+    100124: Tail_7
+    100126: Tail_8
+    100128: RatMesh_LP
+    100130: Back
+    100132: Back2
+    100134: BackLegL1
+    100136: BackLegL2
+    100138: BackLegL3
+    100140: BackLegL4
+    100142: BackLegL5
+    100144: BackLegR1
+    100146: BackLegR2
+    100148: BackLegR3
+    100150: BackLegR4
+    100152: BackLegR5
+    100154: CatMesh
+    100156: EarL1
+    100158: EarL2
+    100160: EarR1
+    100162: EarR2
+    100164: FrontLegL1
+    100166: FrontLegL2
+    100168: FrontLegL3
+    100170: FrontLegL4
+    100172: FrontLegL5
+    100174: FrontLegL6
+    100176: FrontLegR1
+    100178: FrontLegR2
+    100180: FrontLegR3
+    100182: FrontLegR4
+    100184: FrontLegR5
+    100186: FrontLegR6
+    100188: Head
+    100190: Jaw1
+    100192: Jaw2
+    100194: Jaw3
+    100196: Neck1
+    100198: Neck2
+    100200: Tail2
+    100202: Tail3
+    100204: Tail4
+    100206: Tail5
+    100208: Tail6
+    100210: Tail7
+    100212: Tail8
+    400000: //RootNode
+    400002: ChickenMesh
+    400004: Head1
+    400006: joint1
+    400008: joint11
+    400010: joint12
+    400012: joint20
+    400014: joint21
+    400016: joint22
+    400018: joint28
+    400020: joint29
+    400022: joint3
+    400024: joint30
+    400026: joint32
+    400028: joint33
+    400030: joint34
+    400032: joint35
+    400034: joint36
+    400036: joint37
+    400038: joint38
+    400040: joint39
+    400042: joint4
+    400044: joint40
+    400046: joint41
+    400048: joint42
+    400050: joint43
+    400052: joint5
+    400054: joint6
+    400056: joint7
+    400058: joint8
+    400060: joint9
+    400062: Leg1
+    400064: Leg2
+    400066: Tail1
+    400068: Wing1
+    400070: Wing2
+    400072: B_L_Leg_1
+    400074: B_L_Leg_2
+    400076: B_L_Leg_3
+    400078: B_R_Leg_1
+    400080: B_R_Leg_2
+    400082: B_R_Leg_3
+    400084: Back_1
+    400086: Back_2
+    400088: F_L_Leg_1
+    400090: F_L_Leg_2
+    400092: F_L_Leg_3
+    400094: F_R_Leg_1
+    400096: F_R_Leg_2
+    400098: F_R_Leg_3
+    400100: Head_1
+    400102: Head_2
+    400104: Head_3
+    400106: RatMesh
+    400108: Root
+    400110: Shoulders_1
+    400112: Tail_1
+    400114: Tail_2
+    400116: Tail_3
+    400118: Tail_4
+    400120: Tail_5
+    400122: Tail_6
+    400124: Tail_7
+    400126: Tail_8
+    400128: RatMesh_LP
+    400130: Back
+    400132: Back2
+    400134: BackLegL1
+    400136: BackLegL2
+    400138: BackLegL3
+    400140: BackLegL4
+    400142: BackLegL5
+    400144: BackLegR1
+    400146: BackLegR2
+    400148: BackLegR3
+    400150: BackLegR4
+    400152: BackLegR5
+    400154: CatMesh
+    400156: EarL1
+    400158: EarL2
+    400160: EarR1
+    400162: EarR2
+    400164: FrontLegL1
+    400166: FrontLegL2
+    400168: FrontLegL3
+    400170: FrontLegL4
+    400172: FrontLegL5
+    400174: FrontLegL6
+    400176: FrontLegR1
+    400178: FrontLegR2
+    400180: FrontLegR3
+    400182: FrontLegR4
+    400184: FrontLegR5
+    400186: FrontLegR6
+    400188: Head
+    400190: Jaw1
+    400192: Jaw2
+    400194: Jaw3
+    400196: Neck1
+    400198: Neck2
+    400200: Tail2
+    400202: Tail3
+    400204: Tail4
+    400206: Tail5
+    400208: Tail6
+    400210: Tail7
+    400212: Tail8
+    4300000: ChickenMesh
+    4300002: RatMesh
+    4300004: RatMesh_LP
+    4300006: CatMesh
+    7400000: walk
+    7400002: run
+    7400004: dead
+    9500000: //RootNode
+    11100000: //RootNode
+    13700000: ChickenMesh
+    13700002: RatMesh
+    13700004: RatMesh_LP
+    13700006: CatMesh
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 1
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: dead
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 24
+      wrapMode: 1
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Root
+        weight: 1
+      - path: Root/Back
+        weight: 1
+      - path: Root/Back/Back2
+        weight: 1
+      - path: Root/Back/Back2/FrontLegL1
+        weight: 1
+      - path: Root/Back/Back2/FrontLegL1/FrontLegL2
+        weight: 1
+      - path: Root/Back/Back2/FrontLegL1/FrontLegL2/FrontLegL3
+        weight: 1
+      - path: Root/Back/Back2/FrontLegL1/FrontLegL2/FrontLegL3/FrontLegL4
+        weight: 1
+      - path: Root/Back/Back2/FrontLegL1/FrontLegL2/FrontLegL3/FrontLegL4/FrontLegL5
+        weight: 1
+      - path: Root/Back/Back2/FrontLegL1/FrontLegL2/FrontLegL3/FrontLegL4/FrontLegL5/FrontLegL6
+        weight: 1
+      - path: Root/Back/Back2/FrontLegR1
+        weight: 1
+      - path: Root/Back/Back2/FrontLegR1/FrontLegR2
+        weight: 1
+      - path: Root/Back/Back2/FrontLegR1/FrontLegR2/FrontLegR3
+        weight: 1
+      - path: Root/Back/Back2/FrontLegR1/FrontLegR2/FrontLegR3/FrontLegR4
+        weight: 1
+      - path: Root/Back/Back2/FrontLegR1/FrontLegR2/FrontLegR3/FrontLegR4/FrontLegR5
+        weight: 1
+      - path: Root/Back/Back2/FrontLegR1/FrontLegR2/FrontLegR3/FrontLegR4/FrontLegR5/FrontLegR6
+        weight: 1
+      - path: Root/Back/Back2/Neck1
+        weight: 1
+      - path: Root/Back/Back2/Neck1/Neck2
+        weight: 1
+      - path: Root/Back/Back2/Neck1/Neck2/Head
+        weight: 1
+      - path: Root/Back/Back2/Neck1/Neck2/Head/EarL1
+        weight: 1
+      - path: Root/Back/Back2/Neck1/Neck2/Head/EarL1/EarL2
+        weight: 1
+      - path: Root/Back/Back2/Neck1/Neck2/Head/EarR1
+        weight: 1
+      - path: Root/Back/Back2/Neck1/Neck2/Head/EarR1/EarR2
+        weight: 1
+      - path: Root/Back/Back2/Neck1/Neck2/Head/Jaw1
+        weight: 1
+      - path: Root/Back/Back2/Neck1/Neck2/Head/Jaw1/Jaw2
+        weight: 1
+      - path: Root/Back/Back2/Neck1/Neck2/Head/Jaw1/Jaw2/Jaw3
+        weight: 1
+      - path: Root/Tail1
+        weight: 1
+      - path: Root/Tail1/BackLegL1
+        weight: 1
+      - path: Root/Tail1/BackLegL1/BackLegL2
+        weight: 1
+      - path: Root/Tail1/BackLegL1/BackLegL2/BackLegL3
+        weight: 1
+      - path: Root/Tail1/BackLegL1/BackLegL2/BackLegL3/BackLegL4
+        weight: 1
+      - path: Root/Tail1/BackLegL1/BackLegL2/BackLegL3/BackLegL4/BackLegL5
+        weight: 1
+      - path: Root/Tail1/BackLegR1
+        weight: 1
+      - path: Root/Tail1/BackLegR1/BackLegR2
+        weight: 1
+      - path: Root/Tail1/BackLegR1/BackLegR2/BackLegR3
+        weight: 1
+      - path: Root/Tail1/BackLegR1/BackLegR2/BackLegR3/BackLegR4
+        weight: 1
+      - path: Root/Tail1/BackLegR1/BackLegR2/BackLegR3/BackLegR4/BackLegR5
+        weight: 1
+      - path: Root/Tail1/Tail2
+        weight: 1
+      - path: Root/Tail1/Tail2/Tail3
+        weight: 1
+      - path: Root/Tail1/Tail2/Tail3/Tail4
+        weight: 1
+      - path: Root/Tail1/Tail2/Tail3/Tail4/Tail5
+        weight: 1
+      - path: Root/Tail1/Tail2/Tail3/Tail4/Tail5/Tail6
+        weight: 1
+      - path: Root/Tail1/Tail2/Tail3/Tail4/Tail5/Tail6/Tail7
+        weight: 1
+      - path: Root/Tail1/Tail2/Tail3/Tail4/Tail5/Tail6/Tail7/Tail8
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .0149999997
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 0
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+  tangentSpace:
+    normalSmoothAngle: 180
+    splitTangentsAcrossUV: 1
+    normalImportMode: 1
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 1
+  additionalBone: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
