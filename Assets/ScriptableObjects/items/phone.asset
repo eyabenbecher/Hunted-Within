@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d75235525a0c99745bef7890e0dff305, type: 3}
-  m_Name: torch
+  m_Script: {fileID: 11500000, guid: 8f4dd7ac98e621c4a8502bd300303f20, type: 3}
+  m_Name: phone
   m_EditorClassIdentifier: 
   Id: 0
-  prefab: {fileID: 2828453958216338495, guid: 071010afdd55a0c4db12ec9000ab09f0, type: 3}
+  prefab: {fileID: 2828453958216338495, guid: 97916ad6ba1ce7e439a3d3f9291bd83b, type: 3}
   type: 1
   description: 

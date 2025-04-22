@@ -8,6 +8,7 @@ TagManager:
   - Selectable
   - KeyPadObject
   - HerdChild
+  - Locked
   layers:
   - Default
   - TransparentFX

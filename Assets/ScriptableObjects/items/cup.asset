@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8f4dd7ac98e621c4a8502bd300303f20, type: 3}
-  m_Name: tape
+  m_Name: cup
   m_EditorClassIdentifier: 
-  Id: 0
-  prefab: {fileID: 2828453958216338495, guid: fee552a0defbd5f40b15284135e63b0b, type: 3}
+  Id: 3
+  prefab: {fileID: 2828453958216338495, guid: 16b706895f89870469b7e041c3025ce8, type: 3}
   type: 1
   description: 

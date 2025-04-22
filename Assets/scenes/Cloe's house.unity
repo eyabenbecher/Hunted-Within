@@ -2245,7 +2245,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 496388, guid: 5c3db7c604cad2e4e839f33e5e541b03, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -56.32
+      value: -55.59
       objectReference: {fileID: 0}
     - target: {fileID: 496388, guid: 5c3db7c604cad2e4e839f33e5e541b03, type: 3}
       propertyPath: m_LocalRotation.w
@@ -28887,6 +28887,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door_2_Yellow (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1988184177506868, guid: e20483c6a68b6614f9423dfde6d7954f, type: 3}
+      propertyPath: m_TagString
+      value: Locked
+      objectReference: {fileID: 0}
     - target: {fileID: 4073697980755798, guid: e20483c6a68b6614f9423dfde6d7954f, type: 3}
       propertyPath: m_LocalScale.x
       value: 4.986266
@@ -28937,6 +28941,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4073697980755798, guid: e20483c6a68b6614f9423dfde6d7954f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114296553472034236, guid: e20483c6a68b6614f9423dfde6d7954f,
+        type: 3}
+      propertyPath: open
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114296553472034236, guid: e20483c6a68b6614f9423dfde6d7954f,
@@ -33024,7 +33033,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a5da4ad09b79f841a1f9a9045081e95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: bbe3fece6f402cb418b0333be21927b9, type: 2}
+  item: {fileID: 11400000, guid: af86b4bc7063ed6438388b885af1d490, type: 2}
 --- !u!65 &929656947
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -40976,7 +40985,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 448530, guid: 10c8e11e3bf006e41aa773f29986c740, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -55.74
+      value: -55.6
       objectReference: {fileID: 0}
     - target: {fileID: 448530, guid: 10c8e11e3bf006e41aa773f29986c740, type: 3}
       propertyPath: m_LocalRotation.w
@@ -45486,6 +45495,19 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   zoomSpeed: 10
+--- !u!114 &1206514239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1206514231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a5da4ad09b79f841a1f9a9045081e95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: e56be62a640bdcd4d951900116453908, type: 2}
 --- !u!1 &1206856159 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -1147971760049198047, guid: cc8508331083b764cbe53f87a9805b6c,
@@ -58602,7 +58624,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 412106, guid: 8ac0919a3c230534bb6d14bf48cdbd6a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 18.981995
+      value: 16.74
       objectReference: {fileID: 0}
     - target: {fileID: 412106, guid: 8ac0919a3c230534bb6d14bf48cdbd6a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -58610,7 +58632,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 412106, guid: 8ac0919a3c230534bb6d14bf48cdbd6a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -44.628468
+      value: -41.68
       objectReference: {fileID: 0}
     - target: {fileID: 412106, guid: 8ac0919a3c230534bb6d14bf48cdbd6a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -58636,6 +58658,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1206514235}
+    - targetCorrespondingSourceObject: {fileID: 186316, guid: 8ac0919a3c230534bb6d14bf48cdbd6a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1206514239}
   m_SourcePrefab: {fileID: 100100000, guid: 8ac0919a3c230534bb6d14bf48cdbd6a, type: 3}
 --- !u!1 &1571333577
 GameObject:
@@ -74462,6 +74488,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Upright_Piano
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 68b9e9f9f938196448bd873badaa5c5e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1587239269776282961, guid: 68b9e9f9f938196448bd873badaa5c5e,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -89688,6 +89719,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DistanceOpen: 3
   text: {fileID: 4187108277867276983, guid: 50a8fd0070e52fe40aa547f693b138df, type: 3}
+  playerInventory: {fileID: 11400000, guid: b3540e664cf83284a95af986355c4b2e, type: 2}
+  keyItem: {fileID: 11400000, guid: bbe3fece6f402cb418b0333be21927b9, type: 2}
 --- !u!114 &8067200248543485460
 MonoBehaviour:
   m_ObjectHideFlags: 0

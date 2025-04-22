@@ -9,11 +9,13 @@ namespace CameraDoorScript
         public float DistanceOpen = 3;
         public GameObject text;
 
-        private Animator animator; // Character's Animator
+        public InventoryObject playerInventory; // Reference to the player's inventory
+        public ItemObject keyItem;              // The key item required to open "Locked" doors
+
+        private Animator animator;
 
         void Start()
         {
-            // Get the Animator component from this GameObject
             animator = GetComponent<Animator>();
         }
 
@@ -22,17 +24,33 @@ namespace CameraDoorScript
             RaycastHit hit;
             if (Physics.Raycast(transform.position, transform.forward, out hit, DistanceOpen))
             {
-                if (hit.transform.GetComponent<DoorScript.Door>())
+                var door = hit.transform.GetComponent<DoorScript.Door>();
+                if (door != null)
                 {
                     text.SetActive(true);
 
                     if (Input.GetKeyDown(KeyCode.E))
                     {
-                        // Trigger the "OpenDoor" animation
-                        animator.SetTrigger("OpenDoor");
-
-                        // Open the door
-                        hit.transform.GetComponent<DoorScript.Door>().OpenDoor();
+                        // Check if the door is tagged as "Locked"
+                        if (hit.transform.CompareTag("Locked"))
+                        {
+                            if (HasKey())
+                            {
+                                animator.SetTrigger("OpenDoor");
+                                door.OpenDoor();
+                            }
+                            else
+                            {
+                                Debug.Log("This door is locked. You need a key.");
+                                // Optional: Show UI feedback or play a sound
+                            }
+                        }
+                        else
+                        {
+                            // Normal door (no key needed)
+                            animator.SetTrigger("OpenDoor");
+                            door.OpenDoor();
+                        }
                     }
                 }
                 else
@@ -44,6 +62,18 @@ namespace CameraDoorScript
             {
                 text.SetActive(false);
             }
+        }
+
+        private bool HasKey()
+        {
+            foreach (var slot in playerInventory.container)
+            {
+                if (slot.item == keyItem && slot.amount > 0)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }
