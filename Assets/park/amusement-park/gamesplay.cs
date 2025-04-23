@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class SimpleRideRandomController : MonoBehaviour
 {
@@ -9,7 +9,6 @@ public class SimpleRideRandomController : MonoBehaviour
     public AudioSource lightSound;
     public AudioSource rideSound;
 
-    public float animationDelay = 2f;       // Time between light on and animation
     public float animationDuration = 8f;    // Animation length
     public float minWaitTime = 10f;         // Min time between activations
     public float maxWaitTime = 20f;         // Max time between activations
@@ -21,6 +20,7 @@ public class SimpleRideRandomController : MonoBehaviour
         if (rideLight != null) rideLight.enabled = false;
         if (rideSound != null) rideSound.Stop();
         if (lightSound != null) lightSound.Stop();
+        if (rideAnimator != null) rideAnimator.enabled = false; // 🔥 Disable animator at start
 
         StartCoroutine(RandomRideRoutine());
     }
@@ -32,16 +32,16 @@ public class SimpleRideRandomController : MonoBehaviour
 
         while (true)
         {
-            // Light ON + sound
+            // Light ON + light sound
             if (rideLight != null) rideLight.enabled = true;
             if (lightSound != null) lightSound.Play();
 
-            // Wait before animation
-            yield return new WaitForSeconds(animationDelay);
-
-            // Start animation
+            // Enable animator and play animation + ride sound
             if (rideAnimator != null)
+            {
+                rideAnimator.enabled = true;
                 rideAnimator.Play(animationName, 0, 0f);
+            }
 
             if (rideSound != null) rideSound.Play();
 
@@ -51,6 +51,7 @@ public class SimpleRideRandomController : MonoBehaviour
             // Turn light OFF and stop ride sound
             if (rideLight != null) rideLight.enabled = false;
             if (rideSound != null) rideSound.Stop();
+            if (rideAnimator != null) rideAnimator.enabled = false; // ❌ Disable animator to stop auto-play
 
             // Wait random time before next cycle
             float randomWait = Random.Range(minWaitTime, maxWaitTime);
