@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.024120424, g: 0.014432842, b: 0.022917898, a: 1}
+  m_IndirectSpecularColor: {r: 0.024124078, g: 0.014435211, b: 0.022923352, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -341,7 +341,6 @@ MonoBehaviour:
   m_Script: {fileID: 487568927}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Entries: []
 --- !u!4 &104229404
 Transform:
   m_ObjectHideFlags: 19
@@ -2916,37 +2915,37 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: a51523a2032918b4f94f0513dc63cf28,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 61.297413
+      value: 60.845695
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a51523a2032918b4f94f0513dc63cf28,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -397.82098
+      value: -397.86966
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a51523a2032918b4f94f0513dc63cf28,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.99959517
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a51523a2032918b4f94f0513dc63cf28,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: 0.028452704
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a51523a2032918b4f94f0513dc63cf28,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a51523a2032918b4f94f0513dc63cf28,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a51523a2032918b4f94f0513dc63cf28,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: 3.261
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a51523a2032918b4f94f0513dc63cf28,
         type: 3}
@@ -3261,7 +3260,7 @@ MonoBehaviour:
   - {fileID: 949389942}
   - {fileID: 462652086}
   - {fileID: 78405026}
-  moveSpeed: 4
+  moveSpeed: 6
   player: {fileID: 1385620363}
   waypointProximity: 0.5
   lookAtPlayerRange: 20
@@ -11916,7 +11915,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1896498575}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
