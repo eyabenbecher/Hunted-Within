@@ -9,14 +9,20 @@ public class WayPointManager : MonoBehaviour
     public Transform player;
 
     [Header("Behavior Settings")]
-    public float waypointProximity = 0.5f; 
-    public float lookAtPlayerRange = 15f;   
-    public float proceedToNextWaypointRange = 5f; 
+    public float waypointProximity = 0.5f;
+    public float lookAtPlayerRange = 15f;
+    public float proceedToNextWaypointRange = 5f;
 
     [Header("Obstacle Avoidance")]
     public LayerMask obstacleMask;
     public float detectionRadius = 1f;
     public float avoidanceForce = 3f;
+
+    [Header("Audio Settings")]
+    public AudioSource audioSource;
+    public AudioClip audioToFirstWaypoint;
+    public AudioClip audioToNextWaypoint;
+    public AudioClip audioToThirdWaypoint;
 
     private int currentWaypointIndex = 0;
     private bool isWaitingAtWaypoint = false;
@@ -48,6 +54,9 @@ public class WayPointManager : MonoBehaviour
     {
         currentWaypointIndex = 0;
         isWaitingAtWaypoint = false;
+
+        if (audioSource && audioToFirstWaypoint)
+            audioSource.PlayOneShot(audioToFirstWaypoint);
     }
 
     void MoveToCurrentWaypoint()
@@ -61,14 +70,12 @@ public class WayPointManager : MonoBehaviour
             return;
         }
 
-        
         Vector3 desiredDirection = (targetPos - transform.position).normalized;
         Vector3 avoidance = CalculateAvoidance(desiredDirection);
         moveDirection = (desiredDirection + avoidance).normalized;
 
         transform.position += moveDirection * moveSpeed * Time.deltaTime;
 
-        
         if (moveDirection != Vector3.zero)
         {
             Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
@@ -87,7 +94,6 @@ public class WayPointManager : MonoBehaviour
 
         if (playerDistance <= lookAtPlayerRange)
         {
-            
             Vector3 lookDirection = player.position - transform.position;
             lookDirection.y = 0;
             if (lookDirection != Vector3.zero)
@@ -107,6 +113,18 @@ public class WayPointManager : MonoBehaviour
     {
         currentWaypointIndex++;
         isWaitingAtWaypoint = false;
+
+        if (audioSource)
+        {
+            if (currentWaypointIndex == 2 && audioToThirdWaypoint != null)
+            {
+                audioSource.PlayOneShot(audioToThirdWaypoint);
+            }
+            else if (audioToNextWaypoint != null)
+            {
+                audioSource.PlayOneShot(audioToNextWaypoint);
+            }
+        }
     }
 
     Vector3 CalculateAvoidance(Vector3 desiredDirection)
