@@ -1,22 +1,16 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class WayPointManager : MonoBehaviour
 {
     public List<Transform> wayPoints = new List<Transform>();
-    public float moveSpeed = 3f;
     public Transform player;
 
     [Header("Behavior Settings")]
-    public float waypointProximity = 0.5f;
     public float lookAtPlayerRange = 15f;
     public float proceedToNextWaypointRange = 5f;
-
-    [Header("Obstacle Avoidance")]
-    public LayerMask obstacleMask;
-    public float detectionRadius = 1f;
-    public float avoidanceForce = 3f;
+    public float audioTriggerRange = 3f; // Distance to start playing audio when close
 
     [Header("Audio Settings")]
     public AudioSource audioSource;
@@ -24,68 +18,42 @@ public class WayPointManager : MonoBehaviour
     public AudioClip audioToNextWaypoint;
     public AudioClip audioToThirdWaypoint;
 
+    private NavMeshAgent agent;
     private int currentWaypointIndex = 0;
     private bool isWaitingAtWaypoint = false;
-    private Vector3 moveDirection;
+    private bool hasPlayedApproachAudio = false;
 
     void Start()
     {
+        agent = GetComponent<NavMeshAgent>();
+
         if (player == null)
             player = GameObject.FindGameObjectWithTag("Player").transform;
 
-        MoveToFirstWaypoint();
+        GoToWaypoint(0);
     }
 
     void Update()
     {
-        if (currentWaypointIndex >= wayPoints.Count) return;
+        if (currentWaypointIndex >= wayPoints.Count)
+            return;
+
+        float distanceToWaypoint = Vector3.Distance(transform.position, wayPoints[currentWaypointIndex].position);
+
+        if (!hasPlayedApproachAudio && distanceToWaypoint <= audioTriggerRange)
+        {
+            PlayApproachAudio(currentWaypointIndex);
+            hasPlayedApproachAudio = true;
+        }
 
         if (isWaitingAtWaypoint)
         {
             HandleWaitingBehavior();
         }
-        else
+        else if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
         {
-            MoveToCurrentWaypoint();
+            isWaitingAtWaypoint = true;
         }
-    }
-
-    void MoveToFirstWaypoint()
-    {
-        currentWaypointIndex = 0;
-        isWaitingAtWaypoint = false;
-
-        if (audioSource && audioToFirstWaypoint)
-            audioSource.PlayOneShot(audioToFirstWaypoint);
-    }
-
-    void MoveToCurrentWaypoint()
-    {
-        Vector3 targetPos = wayPoints[currentWaypointIndex].position;
-        float distance = Vector3.Distance(transform.position, targetPos);
-
-        if (distance <= waypointProximity)
-        {
-            StartWaiting();
-            return;
-        }
-
-        Vector3 desiredDirection = (targetPos - transform.position).normalized;
-        Vector3 avoidance = CalculateAvoidance(desiredDirection);
-        moveDirection = (desiredDirection + avoidance).normalized;
-
-        transform.position += moveDirection * moveSpeed * Time.deltaTime;
-
-        if (moveDirection != Vector3.zero)
-        {
-            Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
-        }
-    }
-
-    void StartWaiting()
-    {
-        isWaitingAtWaypoint = true;
     }
 
     void HandleWaitingBehavior()
@@ -113,39 +81,37 @@ public class WayPointManager : MonoBehaviour
     {
         currentWaypointIndex++;
         isWaitingAtWaypoint = false;
+        hasPlayedApproachAudio = false;
 
-        if (audioSource)
+        if (currentWaypointIndex < wayPoints.Count)
         {
-            if (currentWaypointIndex == 2 && audioToThirdWaypoint != null)
-            {
-                audioSource.PlayOneShot(audioToThirdWaypoint);
-            }
-            else if (audioToNextWaypoint != null)
-            {
-                audioSource.PlayOneShot(audioToNextWaypoint);
-            }
+            GoToWaypoint(currentWaypointIndex);
         }
     }
 
-    Vector3 CalculateAvoidance(Vector3 desiredDirection)
+    void GoToWaypoint(int index)
     {
-        Vector3 avoidance = Vector3.zero;
-
-        RaycastHit hit;
-        if (Physics.SphereCast(transform.position, 0.5f, desiredDirection, out hit, detectionRadius, obstacleMask))
+        if (index < wayPoints.Count)
         {
-            Vector3 hitNormal = hit.normal;
-            Vector3 avoidanceDir = new Vector3(hitNormal.z, 0, -hitNormal.x);
-
-            if (Vector3.Dot(avoidanceDir, desiredDirection) < 0)
-            {
-                avoidanceDir = -avoidanceDir;
-            }
-
-            float forceMultiplier = 1f - (hit.distance / detectionRadius);
-            avoidance = avoidanceDir * avoidanceForce * forceMultiplier;
+            agent.SetDestination(wayPoints[index].position);
         }
+    }
 
-        return avoidance;
+    void PlayApproachAudio(int index)
+    {
+        if (audioSource == null) return;
+
+        if (index == 0 && audioToFirstWaypoint != null)
+        {
+            audioSource.PlayOneShot(audioToFirstWaypoint);
+        }
+        else if (index == 2 && audioToThirdWaypoint != null)
+        {
+            audioSource.PlayOneShot(audioToThirdWaypoint);
+        }
+        else if (audioToNextWaypoint != null)
+        {
+            audioSource.PlayOneShot(audioToNextWaypoint);
+        }
     }
 }
