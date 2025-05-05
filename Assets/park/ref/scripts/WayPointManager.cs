@@ -30,7 +30,15 @@ public class WayPointManager : MonoBehaviour
         if (player == null)
             player = GameObject.FindGameObjectWithTag("Player").transform;
 
-        GoToWaypoint(0);
+        if (wayPoints.Count > 0)
+        {
+            GoToWaypoint(0);
+        }
+        else
+        {
+            Debug.LogWarning("No waypoints set.");
+            agent.isStopped = true;
+        }
     }
 
     void Update()
@@ -86,6 +94,12 @@ public class WayPointManager : MonoBehaviour
         if (currentWaypointIndex < wayPoints.Count)
         {
             GoToWaypoint(currentWaypointIndex);
+        }
+        else
+        {
+            // Reached the final waypoint — stop the agent
+            agent.isStopped = true;
+            Debug.Log("Final waypoint reached. Agent stopped.");
         }
     }
 

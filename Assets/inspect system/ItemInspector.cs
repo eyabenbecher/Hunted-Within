@@ -4,8 +4,8 @@ using UnityEngine.Rendering.PostProcessing;
 
 public class ItemInspector : MonoBehaviour
 {
-    public Camera inspectionCamera; // Reference to the inspection camera
-    public Transform inspectionPoint; // Position near the camera for inspecting items
+    public Camera inspectionCamera; 
+    public Transform inspectionPoint; 
     public PostProcessVolume postProcessVolume; // Reference to the Post-Processing Volume
     public LayerMask interactableLayer; // Layer for interactable objects
 
