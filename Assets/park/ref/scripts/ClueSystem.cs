@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,9 +13,12 @@ public class ClueSystem : MonoBehaviour
     [Header("Settings")]
     public string playerTag = "Player";
     public float triggerRange = 5f;
+    public float rotationSpeed = 10f;
     public float zoomSpeed = 10f;
     public float minFOV = 20f;
     public float maxFOV = 60f;
+    public float initialFOV = 25f;
+    public float inspectionDelay = 3f;
 
     [Header("Inspectable Objects")]
     public List<GameObject> inspectableObjects = new List<GameObject>();
@@ -26,17 +30,31 @@ public class ClueSystem : MonoBehaviour
     private bool isInspecting = false;
     private GameObject currentItem;
     private MaterialSwitcher materialSwitcher;
-    private bool hasTriggered = false;
+    private bool inspectionTriggered = false;
     private GameObject lastInspectedItem;
 
     void Start()
     {
         reInspectButton.gameObject.SetActive(false);
+        inspectionCamera.fieldOfView = initialFOV;
     }
 
     void Update()
     {
-        CheckPlayerProximity();
+        if (!inspectionTriggered)
+        {
+            GameObject player = GameObject.FindGameObjectWithTag(playerTag);
+            if (player != null)
+            {
+                float distance = Vector3.Distance(transform.position, player.transform.position);
+                if (distance <= triggerRange && inspectableObjects.Count > 0)
+                {
+                    Debug.Log("Player entered range. Starting delay.");
+                    StartCoroutine(StartInspectionWithDelay());
+                    inspectionTriggered = true;
+                }
+            }
+        }
 
         if (isInspecting)
         {
@@ -50,22 +68,18 @@ public class ClueSystem : MonoBehaviour
         }
     }
 
-    private void CheckPlayerProximity()
+    private IEnumerator StartInspectionWithDelay()
     {
-        GameObject player = GameObject.FindGameObjectWithTag(playerTag);
-        if (player != null)
+        float elapsedTime = 0f;
+        while (elapsedTime < inspectionDelay)
         {
-            float distance = Vector3.Distance(transform.position, player.transform.position);
-            if (distance <= triggerRange && !isInspecting && !hasTriggered && inspectableObjects.Count > 0)
-            {
-                StartRandomInspection();
-                hasTriggered = true;
-            }
-            else if (distance > triggerRange)
-            {
-                hasTriggered = false;
-            }
+            elapsedTime += Time.deltaTime;
+            Debug.Log($"Delay time: {elapsedTime} seconds");
+            yield return null;
         }
+
+        Debug.Log("3 seconds passed. Starting inspection.");
+        StartRandomInspection();
     }
 
     private void StartRandomInspection()
@@ -81,8 +95,10 @@ public class ClueSystem : MonoBehaviour
         originalRotation = currentItem.transform.rotation;
 
         currentItem.transform.position = inspectionPoint.position;
-        currentItem.transform.rotation = Quaternion.identity;
         currentItem.transform.SetParent(inspectionCamera.transform);
+
+        Vector3 startRotation = currentItem.transform.localEulerAngles;
+        currentItem.transform.localEulerAngles = new Vector3(90f, 0f, startRotation.z);
 
         materialSwitcher = currentItem.GetComponent<MaterialSwitcher>();
         if (materialSwitcher != null)
@@ -94,18 +110,23 @@ public class ClueSystem : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
+        inspectionCamera.fieldOfView = initialFOV;
+
         lastInspectedItem = currentItem;
         reInspectButton.gameObject.SetActive(false);
     }
 
     private void RotateItem()
     {
-        float rotationSpeed = 100f;
-        float xRotation = Input.GetAxis("Mouse X") * rotationSpeed * Time.deltaTime;
-        float yRotation = Input.GetAxis("Mouse Y") * rotationSpeed * Time.deltaTime;
-
-        currentItem.transform.Rotate(Vector3.up, -xRotation, Space.World);
-        currentItem.transform.Rotate(Vector3.right, yRotation, Space.World);
+        float mouseX = Input.GetAxis("Mouse X") * rotationSpeed * Time.deltaTime;
+        if (currentItem != null)
+        {
+            Vector3 currentEuler = currentItem.transform.localEulerAngles;
+            float zRotation = currentEuler.z > 180 ? currentEuler.z - 360 : currentEuler.z;
+            zRotation -= mouseX;
+            zRotation = Mathf.Clamp(zRotation, -20f, 20f);
+            currentItem.transform.localEulerAngles = new Vector3(currentEuler.x, currentEuler.y, zRotation);
+        }
     }
 
     private void HandleZoom()
@@ -126,6 +147,7 @@ public class ClueSystem : MonoBehaviour
         if (currentItem == null) return;
 
         isInspecting = false;
+        inspectionTriggered = false;
 
         currentItem.transform.SetParent(originalParent);
         currentItem.transform.position = originalPosition;
@@ -140,7 +162,7 @@ public class ClueSystem : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
-        inspectionCamera.fieldOfView = maxFOV;
+        inspectionCamera.fieldOfView = initialFOV;
         currentItem = null;
 
         reInspectButton.gameObject.SetActive(true);
@@ -148,22 +170,25 @@ public class ClueSystem : MonoBehaviour
 
     public void ReInspectLastItem()
     {
-        if (lastInspectedItem == null || isInspecting)
-        {
-            return;
-        }
+        if (lastInspectedItem == null || isInspecting) return;
 
         currentItem = lastInspectedItem;
         isInspecting = true;
+        inspectionTriggered = true;
         reInspectButton.gameObject.SetActive(false);
 
         originalParent = currentItem.transform.parent;
         originalPosition = currentItem.transform.position;
         originalRotation = currentItem.transform.rotation;
 
-        currentItem.transform.position = inspectionPoint.position;
-        currentItem.transform.rotation = Quaternion.identity;
+        float fixedDistance = 4f;
+        Vector3 positionInFrontOfCamera = inspectionCamera.transform.position + inspectionCamera.transform.forward * fixedDistance;
+
+        currentItem.transform.position = positionInFrontOfCamera;
         currentItem.transform.SetParent(inspectionCamera.transform);
+
+        Vector3 startRotation = currentItem.transform.localEulerAngles;
+        currentItem.transform.localEulerAngles = new Vector3(90f, 0f, startRotation.z);
 
         materialSwitcher = currentItem.GetComponent<MaterialSwitcher>();
         if (materialSwitcher != null)
@@ -174,5 +199,7 @@ public class ClueSystem : MonoBehaviour
         inspectionCamera.gameObject.SetActive(true);
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        inspectionCamera.fieldOfView = initialFOV;
     }
 }
