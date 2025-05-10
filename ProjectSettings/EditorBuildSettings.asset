@@ -5,7 +5,19 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/OutdoorsScene.unity
     guid: 8124e5870f4fd4c779e7a5f994e84ad1
+  - enabled: 1
+    path: Assets/mainmenu2/mainmenu2.unity
+    guid: 5bfc7428f6530c14db75272d391b3492
+  - enabled: 1
+    path: Assets/scenes/Cloe's house.unity
+    guid: 0cb2afda1eebd204e806dade9260c71f
+  - enabled: 1
+    path: Assets/scenes/Maze.unity
+    guid: 454d8508d5902924595877c957c9b986
+  - enabled: 1
+    path: Assets/park/park.unity
+    guid: 1759ad21baa1c424f9e560cdc0ccab96
   m_configObjects: {}
