@@ -2,34 +2,64 @@
 
 public class BasicRigidBodyPush : MonoBehaviour
 {
-	public LayerMask pushLayers;
-	public bool canPush;
-	[Range(0.5f, 5f)] public float strength = 1.1f;
+    public LayerMask kickLayers;         // Objects on this layer will trigger the Kick animation
+    public LayerMask pushWithHandsLayers; // Objects on this layer will trigger PushWithHands
 
-	private void OnControllerColliderHit(ControllerColliderHit hit)
-	{
-		if (canPush) PushRigidBodies(hit);
-	}
+    public bool canPush = true;
+    public float strength = 1.1f;
 
-	private void PushRigidBodies(ControllerColliderHit hit)
-	{
-		// https://docs.unity3d.com/ScriptReference/CharacterController.OnControllerColliderHit.html
+    public Animator animator; // Assign in Inspector
 
-		// make sure we hit a non kinematic rigidbody
-		Rigidbody body = hit.collider.attachedRigidbody;
-		if (body == null || body.isKinematic) return;
+    private Rigidbody lastHitBody;
+    private Vector3 lastPushDir;
+    private string lastAnimationTrigger;
 
-		// make sure we only push desired layer(s)
-		var bodyLayerMask = 1 << body.gameObject.layer;
-		if ((bodyLayerMask & pushLayers.value) == 0) return;
+    private void Update()
+    {
+        if (canPush && lastHitBody != null && Input.GetKeyDown(KeyCode.E))
+        {
+            // Apply the force
+            lastHitBody.AddForce(lastPushDir * strength, ForceMode.Impulse);
 
-		// We dont want to push objects below us
-		if (hit.moveDirection.y < -0.3f) return;
+            // Play the correct animation
+            if (!string.IsNullOrEmpty(lastAnimationTrigger))
+            {
+                animator.SetTrigger(lastAnimationTrigger);
+            }
 
-		// Calculate push direction from move direction, horizontal motion only
-		Vector3 pushDir = new Vector3(hit.moveDirection.x, 0.0f, hit.moveDirection.z);
+            // Clear after pushing
+            lastHitBody = null;
+            lastAnimationTrigger = null;
+        }
+    }
 
-		// Apply the push and take strength into account
-		body.AddForce(pushDir * strength, ForceMode.Impulse);
-	}
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (!canPush) return;
+
+        Rigidbody body = hit.collider.attachedRigidbody;
+        if (body == null || body.isKinematic) return;
+
+        int objectLayer = body.gameObject.layer;
+        int objectLayerMask = 1 << objectLayer;
+
+        // Determine animation trigger based on object's layer
+        if ((objectLayerMask & kickLayers) != 0)
+        {
+            lastAnimationTrigger = "Kick";
+        }
+        else if ((objectLayerMask & pushWithHandsLayers) != 0)
+        {
+            lastAnimationTrigger = "PushWithHands";
+        }
+        else
+        {
+            return; // Not in any interactable layer
+        }
+
+        if (hit.moveDirection.y < -0.3f) return;
+
+        lastHitBody = body;
+        lastPushDir = new Vector3(hit.moveDirection.x, 0f, hit.moveDirection.z);
+    }
 }

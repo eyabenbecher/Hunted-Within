@@ -9,11 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 209119132a5f57842a6cba951e0ef8fb, type: 3}
-  m_Name: playerInventory
+  m_Script: {fileID: 11500000, guid: 8f4dd7ac98e621c4a8502bd300303f20, type: 3}
+  m_Name: picture
   m_EditorClassIdentifier: 
-  savePath: inventorySave.json
-  container:
-  - ID: 4
-    item: {fileID: 11400000, guid: 5d8be4e33ba3e9d45a9c1ccc09fade5c, type: 2}
-    amount: 1
+  Id: 4
+  prefab: {fileID: 2828453958216338495, guid: 97916ad6ba1ce7e439a3d3f9291bd83b, type: 3}
+  type: 1
+  description: 
