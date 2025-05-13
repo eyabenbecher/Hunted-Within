@@ -24,7 +24,7 @@ RenderSettings:
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 4
+  m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: 0.5
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.13667752, g: 0.18990007, b: 0.35232642, a: 1}
+  m_IndirectSpecularColor: {r: 0.13670309, g: 0.18996409, b: 0.35242513, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -21564,11 +21564,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 909d917d73a63f940ac158d02e936645, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pushLayers:
+  kickLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  pushWithHandsLayers:
     serializedVersion: 2
     m_Bits: 0
   canPush: 0
   strength: 1.1
+  animator: {fileID: 0}
 --- !u!114 &1167781949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26210,6 +26214,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   mirrorOpenSound: {fileID: 8300000, guid: 2ec27bec4939b8e48bb230301ffb2f6f, type: 3}
   rayDistance: 20
+  sphereRadius: 1
   interactKey: 101
 --- !u!114 &1476269812
 MonoBehaviour:
