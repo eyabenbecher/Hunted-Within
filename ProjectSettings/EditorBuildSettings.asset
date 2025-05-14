@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/park/park.unity
     guid: 1759ad21baa1c424f9e560cdc0ccab96
+  - enabled: 1
+    path: Assets/ZyreathCutScene1.unity
+    guid: 096765ab539fa2942a1f502bc8ec4b41
   m_configObjects: {}

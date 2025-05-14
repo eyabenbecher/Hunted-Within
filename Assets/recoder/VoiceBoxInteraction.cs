@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class VoiceBoxInteraction : MonoBehaviour
 {
-    public GameObject canvas;           // The Canvas to be shown/hidden
-    public KeyCode escapeKey = KeyCode.Escape; // The key to close the canvas (Esc by default)
+    public GameObject canvas;           
+    public KeyCode escapeKey = KeyCode.E; 
 
     void Start()
     {
@@ -28,16 +28,5 @@ public class VoiceBoxInteraction : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        // Check if the escape key is pressed to hide the canvas
-        if (Input.GetKeyDown(escapeKey))
-        {
-            if (canvas != null && canvas.activeSelf)
-            {
-                canvas.SetActive(false);  // Hide the canvas
-            }
-        }
-    }
+
 }
