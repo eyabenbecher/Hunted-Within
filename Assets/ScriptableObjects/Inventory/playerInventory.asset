@@ -13,7 +13,4 @@ MonoBehaviour:
   m_Name: playerInventory
   m_EditorClassIdentifier: 
   savePath: inventorySave.json
-  container:
-  - ID: 4
-    item: {fileID: 11400000, guid: 5d8be4e33ba3e9d45a9c1ccc09fade5c, type: 2}
-    amount: 1
+  container: []

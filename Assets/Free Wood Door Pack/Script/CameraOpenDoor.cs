@@ -38,6 +38,12 @@ namespace CameraDoorScript
                             {
                                 animator.SetTrigger("OpenDoor");
                                 door.OpenDoor();
+
+                                // 🗝️ Remove one key from inventory
+                                RemoveKey();
+
+                                // ✅ Remove the "Locked" tag after opening
+                                hit.transform.tag = "Untagged";
                             }
                             else
                             {
@@ -74,6 +80,18 @@ namespace CameraDoorScript
                 }
             }
             return false;
+        }
+
+        private void RemoveKey()
+        {
+            foreach (var slot in playerInventory.container)
+            {
+                if (slot.item == keyItem && slot.amount > 0)
+                {
+                    slot.amount--; // Remove one key
+                    break;
+                }
+            }
         }
     }
 }

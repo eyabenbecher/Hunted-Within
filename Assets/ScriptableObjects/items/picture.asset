@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: picture
   m_EditorClassIdentifier: 
   Id: 4
-  prefab: {fileID: 2828453958216338495, guid: 97916ad6ba1ce7e439a3d3f9291bd83b, type: 3}
+  prefab: {fileID: 2828453958216338495, guid: b0b70daad6d187a449fa72b5869b1750, type: 3}
   type: 1
   description: 

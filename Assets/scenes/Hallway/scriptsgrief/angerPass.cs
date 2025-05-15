@@ -26,6 +26,9 @@ public class AngerPass : MonoBehaviour
         {
             hasActivated = true;
 
+            // Remove picture from inventory
+            RemovePicture();
+
             // Appear object
             if (objectToAppear != null && spawnPoint != null)
             {
@@ -74,5 +77,17 @@ public class AngerPass : MonoBehaviour
             }
         }
         return false;
+    }
+
+    private void RemovePicture()
+    {
+        foreach (var slot in playerInventory.container)
+        {
+            if (slot.item == pictureItem && slot.amount > 0)
+            {
+                slot.amount--;
+                break;
+            }
+        }
     }
 }

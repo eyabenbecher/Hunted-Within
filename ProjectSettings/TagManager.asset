@@ -9,6 +9,14 @@ TagManager:
   - KeyPadObject
   - HerdChild
   - Locked
+  - Piano
+  - do
+  - re
+  - mi
+  - fa
+  - sol
+  - la
+  - si
   layers:
   - Default
   - TransparentFX
