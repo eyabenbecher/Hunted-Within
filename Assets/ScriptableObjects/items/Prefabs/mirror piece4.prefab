@@ -34,8 +34,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -7, y: -114.3}
-  m_SizeDelta: {x: 267.9846, y: 86.6427}
+  m_AnchoredPosition: {x: 6, y: -111}
+  m_SizeDelta: {x: 295.44, y: 57.287}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &433858785201024133
 CanvasRenderer:
@@ -65,9 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Tape
-
-'
+  m_text: Mirror piece
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -94,7 +92,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 51.25
   m_fontSizeBase: 0.8
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -201,7 +199,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: fa1f00d51b752184f9b942f9557f21b8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c02ae3d5659db6d439341ead8c819246, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -222,7 +220,7 @@ PrefabInstance:
     - target: {fileID: 2890767316851719921, guid: 42d4dfc0329cbc7428647686ff207093,
         type: 3}
       propertyPath: m_Name
-      value: tape
+      value: mirror piece4
       objectReference: {fileID: 0}
     - target: {fileID: 3850118610507243171, guid: 42d4dfc0329cbc7428647686ff207093,
         type: 3}

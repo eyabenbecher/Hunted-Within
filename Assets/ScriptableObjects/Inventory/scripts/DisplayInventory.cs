@@ -45,41 +45,24 @@ public class DisplayInventory : MonoBehaviour
 
     public void UpdateDisplay()
     {
-        // Create a temporary list to store keys that need to be removed
-        List<InventorySlot> slotsToRemove = new List<InventorySlot>();
+        // Destroy all previously displayed items
+        foreach (var obj in itemsDisplayed.Values)
+        {
+            Destroy(obj);
+        }
+        itemsDisplayed.Clear();
 
+        // Rebuild the display based on current inventory
         for (int i = 0; i < inventory.container.Count; i++)
         {
             InventorySlot slot = inventory.container[i];
-
-            if (slot.amount <= 0)
+            if (slot.amount > 0)
             {
-                if (itemsDisplayed.ContainsKey(slot))
-                {
-                    Destroy(itemsDisplayed[slot]); // Remove the GameObject from the UI
-                    slotsToRemove.Add(slot);       // Mark this slot for removal
-                }
+                var obj = Instantiate(slot.item.prefab, Vector3.zero, Quaternion.identity, transform);
+                obj.GetComponent<RectTransform>().localPosition = GetPosition(itemsDisplayed.Count); // Use count to avoid gaps
+                obj.GetComponentInChildren<TextMeshProUGUI>().text = slot.amount.ToString("n0");
+                itemsDisplayed.Add(slot, obj);
             }
-            else
-            {
-                if (itemsDisplayed.ContainsKey(slot))
-                {
-                    itemsDisplayed[slot].GetComponentInChildren<TextMeshProUGUI>().text = slot.amount.ToString("n0");
-                }
-                else
-                {
-                    var obj = Instantiate(slot.item.prefab, Vector3.zero, Quaternion.identity, transform);
-                    obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
-                    obj.GetComponentInChildren<TextMeshProUGUI>().text = slot.amount.ToString("n0");
-                    itemsDisplayed.Add(slot, obj);
-                }
-            }
-        }
-
-        // Clean up removed slots after the loop
-        foreach (var slot in slotsToRemove)
-        {
-            itemsDisplayed.Remove(slot);
         }
     }
 
