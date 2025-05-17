@@ -16,7 +16,6 @@ public class LiaChairSit : MonoBehaviour
     private bool isPlayerInZone = false;
     private bool hasSat = false;
     private Collider liaCollider;
-
     private Quaternion lockedRotation;
 
     void Start()
@@ -95,10 +94,10 @@ public class LiaChairSit : MonoBehaviour
         if (chloeObject != null)
             chloeObject.SetActive(true);
 
-        // Start dialogue canvas right after Chloe appears
+        // Start first dialogue canvas
         if (dialogueManager != null)
         {
-            dialogueManager.StartDialogueAfterDelay(0f);
+            dialogueManager.StartConversation(); // ✅ Correct method name
         }
     }
 }
