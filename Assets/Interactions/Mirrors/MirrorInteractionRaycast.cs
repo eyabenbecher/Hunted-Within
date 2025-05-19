@@ -8,25 +8,26 @@ public class MirrorInteractionRaycast : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip mirrorOpenSound;
     public float rayDistance = 10f;
-    public float sphereRadius = 1f; // Widen the detection cone
+    public float sphereRadius = 1f;
     public KeyCode interactKey = KeyCode.E;
 
     private InteractableMirror currentInteractable = null;
+    private bool hasInteracted = false;
 
     private void Start()
     {
-        uiPrompt.SetActive(false);
+        if (uiPrompt != null) uiPrompt.SetActive(false);
     }
 
     private void Update()
     {
+        if (hasInteracted) return; // Prevent repeated interaction
+
         Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
         RaycastHit hit;
 
-        // Draw the ray for debugging
         Debug.DrawRay(ray.origin, ray.direction * rayDistance, Color.green);
 
-        // Use SphereCast instead of Raycast
         if (Physics.SphereCast(ray, sphereRadius, out hit, rayDistance))
         {
             InteractableMirror interactable = hit.collider.GetComponent<InteractableMirror>();
@@ -35,22 +36,21 @@ public class MirrorInteractionRaycast : MonoBehaviour
             {
                 if (currentInteractable == null)
                 {
-                    uiPrompt.SetActive(true);
+                    uiPrompt?.SetActive(true);
                     currentInteractable = interactable;
                 }
 
                 if (Input.GetKeyDown(interactKey))
                 {
-                    playerAnimator.SetTrigger("push");
-                    mirrorAnimator.SetTrigger("mirror push");
+                    playerAnimator?.SetTrigger("push");
+                    mirrorAnimator?.SetTrigger("mirror push");
 
                     if (audioSource != null && mirrorOpenSound != null)
-                    {
                         audioSource.PlayOneShot(mirrorOpenSound);
-                    }
 
-                    uiPrompt.SetActive(false);
+                    uiPrompt?.SetActive(false);
                     currentInteractable = null;
+                    hasInteracted = true; // Block further interactions
                 }
             }
             else
@@ -68,7 +68,7 @@ public class MirrorInteractionRaycast : MonoBehaviour
     {
         if (currentInteractable != null)
         {
-            uiPrompt.SetActive(false);
+            uiPrompt?.SetActive(false);
             currentInteractable = null;
         }
     }

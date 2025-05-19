@@ -72,7 +72,7 @@ public class Book : MonoBehaviour
         }
 
         // Check player distance for showing/hiding interact button
-        if (player != null && mainCamera.enabled)
+        if (player != null )
         {
             float dist = Vector3.Distance(player.position, transform.position);
             if (dist <= showButtonDistance)
@@ -124,7 +124,7 @@ public class Book : MonoBehaviour
     // Called when Interact Button clicked
     public void OnInteractButtonClicked()
     {
-        mainCamera.enabled = false;
+        mainCamera.enabled = true;
         interactButton.SetActive(false);
         reactivateButton.SetActive(true);
     }
@@ -132,7 +132,7 @@ public class Book : MonoBehaviour
     // Called when Reactivate Button clicked
     public void OnReactivateButtonClicked()
     {
-        mainCamera.enabled = true;
+        mainCamera.enabled = false;
         reactivateButton.SetActive(false);
         interactButton.SetActive(true);
     }

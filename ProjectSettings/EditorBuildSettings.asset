@@ -12,15 +12,30 @@ EditorBuildSettings:
     path: Assets/mainmenu2/mainmenu2.unity
     guid: 5bfc7428f6530c14db75272d391b3492
   - enabled: 1
+    path: Assets/LiaCutscene.unity
+    guid: d181634f225fa3e4cac868d6af30aaba
+  - enabled: 1
     path: Assets/scenes/Cloe's house.unity
     guid: 0cb2afda1eebd204e806dade9260c71f
+  - enabled: 1
+    path: Assets/ZyreathCutScene1.unity
+    guid: 096765ab539fa2942a1f502bc8ec4b41
   - enabled: 1
     path: Assets/scenes/Maze.unity
     guid: 454d8508d5902924595877c957c9b986
   - enabled: 1
+    path: Assets/scenes/mazeEndCutscene.unity
+    guid: ce3ca595e5dd75f46bb4e30150343f98
+  - enabled: 1
+    path: Assets/scenes/ParkCutscene.unity
+    guid: 0a29ec5e1bf749e4ea3bf283f860f9fc
+  - enabled: 1
     path: Assets/park/park.unity
     guid: 1759ad21baa1c424f9e560cdc0ccab96
   - enabled: 1
-    path: Assets/ZyreathCutScene1.unity
-    guid: 096765ab539fa2942a1f502bc8ec4b41
+    path: Assets/scenes/ParkToGrief.unity
+    guid: de36873b3d003e448968f5481bb92225
+  - enabled: 1
+    path: Assets/scenes/Hallway.unity
+    guid: 86d0e9e23fe0f684ea2df2e27f588878
   m_configObjects: {}

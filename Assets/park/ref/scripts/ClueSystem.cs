@@ -9,6 +9,7 @@ public class ClueSystem : MonoBehaviour
     public Camera inspectionCamera;
     public Transform inspectionPoint;
     public Button reInspectButton;
+    public Button exitInspectionButton; 
 
     [Header("Settings")]
     public string playerTag = "Player";
@@ -36,6 +37,7 @@ public class ClueSystem : MonoBehaviour
     void Start()
     {
         reInspectButton.gameObject.SetActive(false);
+        exitInspectionButton.gameObject.SetActive(false); 
         inspectionCamera.fieldOfView = initialFOV;
     }
 
@@ -60,11 +62,6 @@ public class ClueSystem : MonoBehaviour
         {
             RotateItem();
             HandleZoom();
-
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                EndInspection();
-            }
         }
     }
 
@@ -107,13 +104,13 @@ public class ClueSystem : MonoBehaviour
         }
 
         inspectionCamera.gameObject.SetActive(true);
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+      
 
         inspectionCamera.fieldOfView = initialFOV;
 
         lastInspectedItem = currentItem;
         reInspectButton.gameObject.SetActive(false);
+        exitInspectionButton.gameObject.SetActive(true); 
     }
 
     private void RotateItem()
@@ -142,7 +139,7 @@ public class ClueSystem : MonoBehaviour
         }
     }
 
-    private void EndInspection()
+    public void EndInspection()
     {
         if (currentItem == null) return;
 
@@ -159,13 +156,13 @@ public class ClueSystem : MonoBehaviour
         }
 
         inspectionCamera.gameObject.SetActive(false);
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+      
 
         inspectionCamera.fieldOfView = initialFOV;
         currentItem = null;
 
         reInspectButton.gameObject.SetActive(true);
+        exitInspectionButton.gameObject.SetActive(false);
     }
 
     public void ReInspectLastItem()
@@ -176,6 +173,7 @@ public class ClueSystem : MonoBehaviour
         isInspecting = true;
         inspectionTriggered = true;
         reInspectButton.gameObject.SetActive(false);
+        exitInspectionButton.gameObject.SetActive(true); 
 
         originalParent = currentItem.transform.parent;
         originalPosition = currentItem.transform.position;
@@ -197,9 +195,7 @@ public class ClueSystem : MonoBehaviour
         }
 
         inspectionCamera.gameObject.SetActive(true);
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-
+       
         inspectionCamera.fieldOfView = initialFOV;
     }
 }

@@ -17,6 +17,7 @@ public class DialogueCanvasManager : MonoBehaviour
     public AudioClip winClip;                 // ✅ Win UI voice line
 
     private int currentCanvasIndex = 0;
+    public Camera mainCamera;
 
     void Start()
     {
@@ -130,5 +131,6 @@ public class DialogueCanvasManager : MonoBehaviour
     public void RetryScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+       
     }
 }
