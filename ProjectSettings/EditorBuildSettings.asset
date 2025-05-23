@@ -38,4 +38,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/scenes/Hallway.unity
     guid: 86d0e9e23fe0f684ea2df2e27f588878
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: e2b7706aa7e9e5a4390611f9ba5a3fde,
+      type: 2}
