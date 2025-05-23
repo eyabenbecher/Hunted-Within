@@ -17,6 +17,9 @@ TagManager:
   - sol
   - la
   - si
+  - Collectable
+  - Interactable
+  - Drawer
   layers:
   - Default
   - TransparentFX

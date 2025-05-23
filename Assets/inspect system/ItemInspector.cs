@@ -9,7 +9,7 @@ public class ItemInspector : MonoBehaviour
     public Transform inspectionPoint;
     public PostProcessVolume postProcessVolume;
     public LayerMask interactableLayer;
-    public Button quitInspectionButton; // UI Button to quit inspection
+    public Button quitInspectionButton;
 
     private DepthOfField depthOfField;
     private Transform originalParent;
@@ -32,7 +32,6 @@ public class ItemInspector : MonoBehaviour
             depthOfField = dof;
         }
 
-        // Ensure the quit button is hidden at start
         if (quitInspectionButton != null)
         {
             quitInspectionButton.gameObject.SetActive(false);
@@ -84,7 +83,7 @@ public class ItemInspector : MonoBehaviour
             materialSwitcher.enabled = false;
         }
 
-        // Cursor remains unlocked and visible during inspection
+
 
         if (depthOfField != null)
         {
@@ -137,7 +136,6 @@ public class ItemInspector : MonoBehaviour
             materialSwitcher.enabled = true;
         }
 
-        // Cursor lock and visibility control removed
 
         if (depthOfField != null)
         {

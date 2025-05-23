@@ -4,8 +4,9 @@ public class VanishOnApproach : MonoBehaviour
 {
     public Transform player;
     public GameObject disappearingObject;
+    public GameObject objectToCalculateDistance;
     public float vanishDistance = 10f;
-    public float reappearDistance = 20f;
+    public float reappearDistance = 10f;
     public AudioSource audioSource;
     public AudioClip vanishSound;
 
@@ -25,8 +26,8 @@ public class VanishOnApproach : MonoBehaviour
 
     void Update()
     {
-        float distance = Vector3.Distance(player.position, disappearingObject.transform.position);
-
+       
+        float distance = Vector3.Distance(player.position, objectToCalculateDistance.transform.position);
         if (isCurrentlyVisible && distance <= vanishDistance)
         {
             if (audioSource != null && vanishSound != null)

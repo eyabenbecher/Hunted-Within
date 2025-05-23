@@ -19,7 +19,7 @@ public class ClueSystem : MonoBehaviour
     public float minFOV = 20f;
     public float maxFOV = 60f;
     public float initialFOV = 25f;
-    public float inspectionDelay = 3f;
+    public float inspectionDelay = 2f;
 
     [Header("Inspectable Objects")]
     public List<GameObject> inspectableObjects = new List<GameObject>();
@@ -71,7 +71,7 @@ public class ClueSystem : MonoBehaviour
         while (elapsedTime < inspectionDelay)
         {
             elapsedTime += Time.deltaTime;
-            Debug.Log($"Delay time: {elapsedTime} seconds");
+       
             yield return null;
         }
 

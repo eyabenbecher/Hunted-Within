@@ -6,14 +6,15 @@ public class DrawerRotator : MonoBehaviour
     public InteractionMode mode = InteractionMode.Rotate;
 
     [Header("Setup")]
-    public Transform affectedPart;           // The drawer or door to animate
-    public Transform player;                 // The player GameObject
-    public Vector3 rayOriginOffset = new Vector3(0f, 0.5f, 0f); // Editable in Inspector
+    public Transform affectedPart;
+    public Transform Player;
+    public Vector3 rayOriginOffset = new Vector3(0f, 0.5f, 0f);
+    public Vector3 rayDirectionRotation = Vector3.zero;
     public float interactionDistance = 2f;
 
     [Header("Rotation Settings")]
     public Vector3 openRotationEuler = new Vector3(0f, 90f, 0f);
-    public float rotationSpeed = 2f;
+    public float rotationSpeed = 100f; // degrees per second
 
     [Header("Translation Settings")]
     public Vector3 openPositionOffset = new Vector3(0f, 0f, 0.3f);
@@ -29,12 +30,19 @@ public class DrawerRotator : MonoBehaviour
 
     void Start()
     {
+        if (affectedPart == null)
+        {
+            Debug.LogError("AffectedPart is not assigned!");
+            enabled = false;
+            return;
+        }
+
         if (mode == InteractionMode.Rotate)
         {
             closedRotation = affectedPart.localRotation;
             targetRotation = closedRotation;
         }
-        else if (mode == InteractionMode.Translate)
+        else
         {
             closedPosition = affectedPart.localPosition;
             targetPosition = closedPosition;
@@ -43,60 +51,88 @@ public class DrawerRotator : MonoBehaviour
 
     void Update()
     {
-        if (player == null || affectedPart == null) return;
-
-        Vector3 rayOrigin = transform.position + transform.TransformDirection(rayOriginOffset);
-        Vector3 toPlayer = (player.position + Vector3.up * 0.5f) - rayOrigin;
-        float distance = toPlayer.magnitude;
-        Vector3 direction = toPlayer.normalized;
-
-        // Main raycast logic
-        bool isInFront = Vector3.Dot(transform.forward, direction) > 0.5f;
-
-        if (!isOpen && distance < interactionDistance && isInFront && Input.GetKeyDown(KeyCode.E))
+        if (Player == null)
         {
-            isOpen = true;
-            Debug.Log("Interaction triggered");
-
-            if (mode == InteractionMode.Rotate)
-                targetRotation = Quaternion.Euler(openRotationEuler);
-            else if (mode == InteractionMode.Translate)
-                targetPosition = closedPosition + openPositionOffset;
+            Debug.LogWarning("Player not assigned!");
+            return;
         }
 
-        // Smooth movement
-        if (isOpen)
+        Vector3 rayOrigin = transform.position + transform.TransformDirection(rayOriginOffset);
+        Vector3 baseDirection = Quaternion.Euler(rayDirectionRotation) * transform.forward;
+
+        Vector3[] directions = new Vector3[]
         {
-            if (mode == InteractionMode.Rotate)
-                affectedPart.localRotation = Quaternion.Lerp(affectedPart.localRotation, targetRotation, Time.deltaTime * rotationSpeed);
-            else if (mode == InteractionMode.Translate)
-                affectedPart.localPosition = Vector3.Lerp(affectedPart.localPosition, targetPosition, Time.deltaTime * translationSpeed);
+            baseDirection,
+            Quaternion.Euler(0, 15, 0) * baseDirection,
+            Quaternion.Euler(0, -15, 0) * baseDirection,
+            Quaternion.Euler(10, 0, 0) * baseDirection,
+            Quaternion.Euler(-10, 0, 0) * baseDirection,
+        };
+
+        foreach (var direction in directions)
+        {
+            Debug.DrawRay(rayOrigin, direction * interactionDistance, Color.red);
+
+            if (Physics.Raycast(rayOrigin, direction, out RaycastHit hit, interactionDistance))
+            {
+                // Check if ray hits the player
+                if (hit.collider.transform == Player)
+                {
+                    if (Input.GetKeyDown(KeyCode.E))
+                    {
+                        isOpen = !isOpen; // Toggle state
+
+                        if (mode == InteractionMode.Rotate)
+                        {
+                            targetRotation = isOpen ? Quaternion.Euler(openRotationEuler) : closedRotation;
+                        }
+                        else
+                        {
+                            targetPosition = isOpen ? closedPosition + openPositionOffset : closedPosition;
+                        }
+                        break; // Exit after toggling
+                    }
+                }
+            }
+        }
+
+        // Smoothly animate rotation or position
+        if (mode == InteractionMode.Rotate)
+        {
+            affectedPart.localRotation = Quaternion.RotateTowards(affectedPart.localRotation, targetRotation, rotationSpeed * Time.deltaTime);
+
+            if (Quaternion.Angle(affectedPart.localRotation, targetRotation) < 0.1f)
+                affectedPart.localRotation = targetRotation; // Snap to target
+        }
+        else
+        {
+            affectedPart.localPosition = Vector3.MoveTowards(affectedPart.localPosition, targetPosition, translationSpeed * Time.deltaTime);
+
+            if (Vector3.Distance(affectedPart.localPosition, targetPosition) < 0.01f)
+                affectedPart.localPosition = targetPosition; // Snap to target
         }
     }
 
-    // ?? Visible in Scene View, not just Play Mode
     void OnDrawGizmos()
     {
-        if (player == null) return;
+        if (Player == null || affectedPart == null) return;
 
         Vector3 rayOrigin = transform.position + transform.TransformDirection(rayOriginOffset);
-        Vector3 toPlayer = (player.position + Vector3.up * 0.5f) - rayOrigin;
-        Vector3 direction = toPlayer.normalized;
+        Vector3 baseDirection = Quaternion.Euler(rayDirectionRotation) * transform.forward;
 
-        float length = interactionDistance;
+        Vector3[] directions = new Vector3[]
+        {
+            baseDirection,
+            Quaternion.Euler(0, 15, 0) * baseDirection,
+            Quaternion.Euler(0, -15, 0) * baseDirection,
+            Quaternion.Euler(10, 0, 0) * baseDirection,
+            Quaternion.Euler(-10, 0, 0) * baseDirection,
+        };
 
-        // Main ray
         Gizmos.color = Color.green;
-        Gizmos.DrawRay(rayOrigin, direction * length);
+        foreach (var dir in directions)
+            Gizmos.DrawRay(rayOrigin, dir * interactionDistance);
 
-        // Spread rays
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawRay(rayOrigin, Quaternion.Euler(0, 15, 0) * direction * length);
-        Gizmos.DrawRay(rayOrigin, Quaternion.Euler(0, -15, 0) * direction * length);
-        Gizmos.DrawRay(rayOrigin, Quaternion.Euler(10, 0, 0) * direction * length);
-        Gizmos.DrawRay(rayOrigin, Quaternion.Euler(-10, 0, 0) * direction * length);
-
-        // Ray origin indicator
         Gizmos.color = Color.cyan;
         Gizmos.DrawSphere(rayOrigin, 0.025f);
     }

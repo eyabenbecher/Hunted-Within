@@ -21,42 +21,52 @@ public class MirrorInteractionRaycast : MonoBehaviour
 
     private void Update()
     {
-        if (hasInteracted) return; // Prevent repeated interaction
+        if (hasInteracted) return;
 
         Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
-        RaycastHit hit;
+        RaycastHit[] hits = Physics.SphereCastAll(ray, sphereRadius, rayDistance);
 
-        Debug.DrawRay(ray.origin, ray.direction * rayDistance, Color.green);
+        InteractableMirror nearestMirror = null;
+        RaycastHit nearestHit = new RaycastHit();
+        float closestDistance = Mathf.Infinity;
 
-        if (Physics.SphereCast(ray, sphereRadius, out hit, rayDistance))
+        foreach (var hit in hits)
         {
-            InteractableMirror interactable = hit.collider.GetComponent<InteractableMirror>();
-
-            if (interactable != null)
+            InteractableMirror mirror = hit.collider.GetComponent<InteractableMirror>();
+            if (mirror != null)
             {
-                if (currentInteractable == null)
+                float distance = Vector3.Distance(transform.position, hit.point);
+                if (distance < closestDistance)
                 {
-                    uiPrompt?.SetActive(true);
-                    currentInteractable = interactable;
-                }
-
-                if (Input.GetKeyDown(interactKey))
-                {
-                    playerAnimator?.SetTrigger("push");
-                    mirrorAnimator?.SetTrigger("mirror push");
-
-                    if (audioSource != null && mirrorOpenSound != null)
-                        audioSource.PlayOneShot(mirrorOpenSound);
-
-                    uiPrompt?.SetActive(false);
-                    currentInteractable = null;
-                    hasInteracted = true; // Block further interactions
+                    closestDistance = distance;
+                    nearestMirror = mirror;
+                    nearestHit = hit;
                 }
             }
-            else
+        }
+
+        if (nearestMirror != null)
+        {
+            if (currentInteractable == null)
             {
-                ClearInteraction();
+                uiPrompt?.SetActive(true);
+                currentInteractable = nearestMirror;
             }
+
+            if (Input.GetKeyDown(interactKey))
+            {
+                playerAnimator?.SetTrigger("push");
+                mirrorAnimator?.SetTrigger("mirror push");
+
+                if (audioSource != null && mirrorOpenSound != null)
+                    audioSource.PlayOneShot(mirrorOpenSound);
+
+                uiPrompt?.SetActive(false);
+                currentInteractable = null;
+                hasInteracted = true; 
+            }
+
+            Debug.DrawRay(ray.origin, ray.direction * rayDistance, Color.green);
         }
         else
         {
