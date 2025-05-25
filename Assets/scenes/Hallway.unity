@@ -39,7 +39,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.04529335, g: 0.03157446, b: 0.030765597, a: 1}
+  m_IndirectSpecularColor: {r: 0.045308862, g: 0.031545673, b: 0.030662958, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4389,7 +4389,7 @@ PrefabInstance:
     - target: {fileID: 2070925441746177912, guid: a1a802ecaf6775746bb2a929fb554ad8,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 31.417046
+      value: 32.205273
       objectReference: {fileID: 0}
     - target: {fileID: 2070925441746177912, guid: a1a802ecaf6775746bb2a929fb554ad8,
         type: 3}
@@ -4399,7 +4399,7 @@ PrefabInstance:
     - target: {fileID: 2070925441746177912, guid: a1a802ecaf6775746bb2a929fb554ad8,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -103.35127
+      value: -104.04695
       objectReference: {fileID: 0}
     - target: {fileID: 2070925441746177912, guid: a1a802ecaf6775746bb2a929fb554ad8,
         type: 3}
@@ -7122,7 +7122,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 305499534}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 32.159, y: 10.879, z: -103.305}
   m_LocalScale: {x: 0.57125366, y: 0.57125366, z: 0.57125366}
   m_ConstrainProportionsScale: 0
@@ -7130,7 +7130,7 @@ Transform:
   - {fileID: 135805355}
   - {fileID: 660345568}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &305499536
 AudioSource:
   m_ObjectHideFlags: 0
@@ -8763,7 +8763,7 @@ PrefabInstance:
     - target: {fileID: 8944336655422409503, guid: f6d148d888ffbf54b9afe9936dfaec1f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 31.417046
+      value: 32.205273
       objectReference: {fileID: 0}
     - target: {fileID: 8944336655422409503, guid: f6d148d888ffbf54b9afe9936dfaec1f,
         type: 3}
@@ -8773,12 +8773,12 @@ PrefabInstance:
     - target: {fileID: 8944336655422409503, guid: f6d148d888ffbf54b9afe9936dfaec1f,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -103.35127
+      value: -104.04695
       objectReference: {fileID: 0}
     - target: {fileID: 8944336655422409503, guid: f6d148d888ffbf54b9afe9936dfaec1f,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8944336655422409503, guid: f6d148d888ffbf54b9afe9936dfaec1f,
         type: 3}
@@ -8788,7 +8788,7 @@ PrefabInstance:
     - target: {fileID: 8944336655422409503, guid: f6d148d888ffbf54b9afe9936dfaec1f,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.7071068
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8944336655422409503, guid: f6d148d888ffbf54b9afe9936dfaec1f,
         type: 3}
@@ -8803,12 +8803,12 @@ PrefabInstance:
     - target: {fileID: 8944336655422409503, guid: f6d148d888ffbf54b9afe9936dfaec1f,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 15.34
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8944336655422409503, guid: f6d148d888ffbf54b9afe9936dfaec1f,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0.6
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10862,7 +10862,7 @@ MonoBehaviour:
   interactButton: {fileID: 136129292}
   reactivateButton: {fileID: 951544471}
   mainCamera: {fileID: 1679099705}
-  player: {fileID: 0}
+  player: {fileID: 305499535}
   showButtonDistance: 1
 --- !u!4 &404866730
 Transform:
@@ -11633,6 +11633,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2571031933126064164, guid: 484825595b05a466c86e7c7b44719ab1,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 2571031933126065112, guid: 484825595b05a466c86e7c7b44719ab1,
         type: 3}
@@ -33136,7 +33141,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: fee8f2392cb58414485703bbecccdc87, type: 3}
   - {fileID: 8300000, guid: 9a71de882877730438e742fab21eabc5, type: 3}
   winClip: {fileID: 8300000, guid: d5854462735c2384c9b3e5e67e057c10, type: 3}
-  mainCamera: {fileID: 0}
+  mainCamera: {fileID: 847916470}
 --- !u!1001 &1096502703
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35827,8 +35832,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sitPoint: {fileID: 373152920}
-  lia: {fileID: 0}
-  liaAnimator: {fileID: 0}
+  lia: {fileID: 305499534}
+  liaAnimator: {fileID: 305499543}
   sitPromptUI: {fileID: 109902408}
   mirrorObject: {fileID: 2094271311}
   chloeObject: {fileID: 1477335728}
@@ -46092,7 +46097,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mode: 1
   affectedPart: {fileID: 1576405195}
-  Player: {fileID: 0}
+  Player: {fileID: 305499535}
   rayOriginOffset: {x: 0.11, y: 0.24, z: 0}
   rayDirectionRotation: {x: 0, y: 0, z: 0}
   interactionDistance: 0.74
@@ -52722,7 +52727,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mode: 1
   affectedPart: {fileID: 572167418}
-  Player: {fileID: 0}
+  Player: {fileID: 305499535}
   rayOriginOffset: {x: 0.01, y: 0.25, z: -0.04}
   rayDirectionRotation: {x: 0, y: 0, z: 0}
   interactionDistance: 0.7
@@ -54654,7 +54659,7 @@ MonoBehaviour:
   playPianoButton: {fileID: 1231508097}
   exitPianoButton: {fileID: 499411210}
   pianoCamera: {fileID: 277648053}
-  player: {fileID: 0}
+  player: {fileID: 305499535}
   activationDistance: 1
 --- !u!1 &1822284974 stripped
 GameObject:
@@ -56867,7 +56872,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mode: 0
   affectedPart: {fileID: 769662251}
-  Player: {fileID: 0}
+  Player: {fileID: 305499535}
   rayOriginOffset: {x: -0.19, y: 0.03, z: 0}
   rayDirectionRotation: {x: 0, y: 0, z: 0}
   interactionDistance: 0.9
