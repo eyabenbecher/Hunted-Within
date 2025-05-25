@@ -12,6 +12,10 @@ public class AudioButtonCycle : MonoBehaviour
     public GameObject canvasToHide;
     public GameObject canvasAfterLastAudio;
 
+    public AudioSource globalAudioSource; // Add this in the inspector
+    public float loweredVolume = 0.2f;
+    private float originalVolume;
+
     private AudioSource audioSource;
     private int currentAudioIndex = 0;
     private bool quitPressed = false;
@@ -21,6 +25,8 @@ public class AudioButtonCycle : MonoBehaviour
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        if (globalAudioSource != null)
+            originalVolume = globalAudioSource.volume;
 
         if (playButton != null)
             playButton.onClick.AddListener(PlayFirstAudio);
@@ -36,6 +42,14 @@ public class AudioButtonCycle : MonoBehaviour
 
         if (canvasAfterLastAudio != null)
             canvasAfterLastAudio.SetActive(false);
+    }
+
+    void Update()
+    {
+        if (globalAudioSource == null) return;
+
+        // Adjust global audio volume based on whether the current audio is playing
+        globalAudioSource.volume = audioSource.isPlaying ? loweredVolume : originalVolume;
     }
 
     void PlayFirstAudio()
